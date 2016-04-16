@@ -49,7 +49,7 @@ class Dynasty(models.Model):
 
 
 class Image(models.Model):
-    file = models.FileField('File', upload_to='canpian/')
+    file = models.FileField(upload_to='canpian/')
     canpian = models.ForeignKey('Canpian', related_name='images', blank=True, null=True)
 
     def __unicode__(self):
