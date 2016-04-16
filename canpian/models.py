@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-import uuid
 from django.db import models
 
 # Create your models here.
@@ -14,8 +13,6 @@ class Canpian(models.Model):
 	(INCOMPLETE, '残缺'),
     )
 
-
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     qly_id = models.PositiveIntegerField(verbose_name='本地编号')
     name = models.CharField(max_length=60, verbose_name='名称')
     dynasty = models.ForeignKey('Dynasty', on_delete=models.CASCADE, verbose_name='年代')
@@ -39,7 +36,6 @@ class Canpian(models.Model):
 
 
 class Dynasty(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=30, verbose_name='名称')
     start_year = models.SmallIntegerField(verbose_name='开始年份')
     end_year = models.SmallIntegerField(verbose_name='终止年份')
@@ -50,5 +46,26 @@ class Dynasty(models.Model):
     class Meta:
 	verbose_name = '年代'
         verbose_name_plural = '年代'
+
+
+class Image(models.Model):
+    file = models.FileField('File', upload_to='canpian/')
+    canpian = models.ForeignKey('Canpian', related_name='images', blank=True, null=True)
+
+    def __unicode__(self):
+        return self.filename
+
+    @property
+    def filename(self):
+        return self.file.name.rsplit('/', 1)[-1]
+
+    def admin_thumbnail(self):
+        return u'<img src="%s" />' % (self.file.url)
+    admin_thumbnail.short_description = 'Thumbnail'
+    admin_thumbnail.allow_tags = True
+
+    class Meta:
+	verbose_name = '图片'
+        verbose_name_plural = '图片'
 
 

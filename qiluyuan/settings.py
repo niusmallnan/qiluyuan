@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'multiupload',
     'canpian.apps.CanpianConfig',
 ]
 
@@ -120,5 +121,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+# qiniu storage
+QINIU_ACCESS_KEY = 'REBs8trrTR58FAeT43bGnqPgQPpPEPOrEaFRCCxF'
+QINIU_SECRET_KEY = 'P5OT-c87fxQp_x1R_pVtkIr_lsZYbCDjd21rCm1O'
+QINIU_BUCKET_DOMAIN = '7xt01z.com1.z0.glb.clouddn.com'
+QINIU_BUCKET_NAME = 'qiluyuan'
+DEFAULT_FILE_STORAGE = 'qiniustorage.backends.QiniuMediaStorage'
