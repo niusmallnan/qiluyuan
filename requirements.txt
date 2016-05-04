@@ -1,2 +1,4 @@
 Django==1.9.5
 django-qiniu-storage
+
+#MySQL-python

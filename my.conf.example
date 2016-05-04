@@ -1,0 +1,6 @@
+[client]
+database = qiluyuan
+host = 192.168.253.157
+user = root
+password = root
+default-character-set = utf8
