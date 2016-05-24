@@ -32,10 +32,9 @@ class BronzeMirrorAdmin(admin.ModelAdmin):
     fields = ('name', 'size', 'create_age', 'valuation',
               'deal', 'desc', 'yc_link', 'display_img', 'auction_company',
               'auction_meet', 'auction_session')
-    readonly_fields = ('yc_link', 'display_img', 'auction_company',
-                       'auction_meet', 'auction_session')
+    readonly_fields = fields
     list_display = ('name', 'auction_date', 'create_age', 'valuation', 'deal')
-    list_filter = (AuctionYearListFilter,)
+    list_filter = (AuctionYearListFilter, 'auction_company')
 
     def display_img(self, obj):
         full_urls = MIRROR_DOMAIN + obj.file_urls
