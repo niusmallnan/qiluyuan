@@ -28,17 +28,20 @@ class AuctionYearListFilter(admin.SimpleListFilter):
 
 
 class BronzeMirrorAdmin(admin.ModelAdmin):
-    search_fields = ('name',)
+    search_fields = ('name', 'auction_company')
     fields = ('name', 'size', 'create_age', 'valuation',
               'deal', 'desc', 'yc_link', 'display_img', 'auction_company',
               'auction_meet', 'auction_session')
     readonly_fields = fields
-    list_display = ('name', 'auction_date', 'create_age', 'valuation', 'deal')
+    list_display = ('name', 'auction_date', 'create_age', 'valuation', 'deal',
+                    'auction_company')
     list_filter = (AuctionYearListFilter, 'auction_company')
 
     def display_img(self, obj):
         full_urls = MIRROR_DOMAIN + obj.file_urls
-        return mark_safe("""<a href="%s" target="_blank"><img src="%s?imageView2/2/w/600" /></a>""" % (full_urls, full_urls))
+        return mark_safe("""<a href="%s" target="_blank">
+                            <img src="%s?imageView2/2/w/600" /></a>""" % (
+                            full_urls, full_urls))
     display_img.short_description = '图片'
 
     def yc_link(self, obj):
