@@ -27,3 +27,17 @@ class BronzeMirror(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def next(self):
+        try:
+            return BronzeMirror.objects.get(pk=self.pk+1)
+        except:
+            return None
+
+    def previous(self):
+        try:
+            return BronzeMirror.objects.get(pk=self.pk-1)
+        except:
+            return None
+
+

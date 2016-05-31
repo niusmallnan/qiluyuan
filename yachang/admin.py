@@ -44,6 +44,8 @@ class BronzeMirrorAdmin(admin.ModelAdmin):
                             full_urls, full_urls))
     display_img.short_description = '图片'
 
+    change_form_template = 'admin/custom_change_form.html'
+
     def yc_link(self, obj):
         return mark_safe("""<a href="%s" target="_blank">%s</a>""" % (
                             obj.url, obj.url))
