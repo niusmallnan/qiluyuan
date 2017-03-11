@@ -4,3 +4,4 @@
 */migrations
 .venv
 my.conf
+scripts/*.sql

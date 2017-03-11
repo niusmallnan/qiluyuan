@@ -20,7 +20,7 @@ class Canpian(models.Model):
     weight = models.FloatField(verbose_name='重量', help_text='单位克')
     diameter = models.FloatField(verbose_name='直径', help_text='单位厘米')
     thickness = models.FloatField(verbose_name='厚度', help_text='单位毫米')
-    remark = models.TextField(verbose_name='备注')
+    remark = models.TextField(verbose_name='备注', blank=True)
     completeness = models.CharField(max_length=10, choices=COMPLETE_CHOICES,
 				    default=INCOMPLETE, verbose_name='是否完整')
 
