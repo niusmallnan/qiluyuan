@@ -17,3 +17,5 @@ class BronzeMirror(models.Model):
     auction_session = models.CharField(max_length=100)
     url = models.URLField()
     file_urls = models.CharField(max_length=200)
+    yc_id = models.CharField(max_length=50)
+    auction_date = models.CharField(max_length=100)
