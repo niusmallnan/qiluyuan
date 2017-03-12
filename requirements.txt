@@ -1,4 +1,4 @@
 Django==1.9.5
-django-qiniu-storage
-
-MySQL-python
+django-qiniu-storage==2.3.0
+requests==2.13.0
+MySQL-python==1.2.5
